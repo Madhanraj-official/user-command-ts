@@ -1,0 +1,49 @@
+{
+  "name": "@service/user-command",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "exports": {
+    "@app": "./src/*"
+  },
+  "scripts": {
+    "dev": "bun run src/index.ts",
+    "start": "bun run dist/index.js",
+    "build": "bun build src/index.ts --outdir dist --target node",
+    "lint": "eslint src --ext .js,.ts,.tsx --max-warnings=0",
+    "lint:fix": "eslint src --ext .js,.ts,.tsx --fix",
+    "format": "prettier --write src",
+    "format:check": "prettier --check src",
+    "check-types": "",
+    "test": "vitest -c tsconfig.test.json",
+    "test:ui": "vitest -c tsconfig.test.json --ui",
+    "test:coverage": "vitest run  --coverage src",
+    "test:watch": "vitest run -c tsconfig.test.json --watch src",
+    "test:report": "http-server coverage/",
+    "docker:build": "docker build -t .",
+    "docker:run": "docker",
+    "docker:push": "docker push",
+    "git:add": "git add .",
+    "git:commit": "git commit -m ",
+    "git:push": "git push"
+  },
+  "dependencies": {
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "devDependencies": {
+    "eslint": "^9.35.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4",
+    "@vitest/ui": "^0.12.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/coverage-c8": "^0.33.0",
+    "vite-tsconfig-paths": "^5.1.4",
+    "supertest": "^7.1.4",
+    "@types/supertest": "^6.0.3",
+    "tsconfig-paths": "^4.0.0",
+    "http-server": "^14.1.1",
+    "@microservice/eslint-config": "^1.0.0"
+  },
+  "private": true
+}

@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "outDir": "test-dist",
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "@index": ["./src/index.ts"],
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.test.ts", "src/*.test.ts","../../../node_modules/vitest/globals.d.ts"]
+}
