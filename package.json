@@ -28,7 +28,6 @@
     "git:push": "git push"
   },
   "dependencies": {
-    "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
     "eslint": "^9.35.0",
@@ -43,7 +42,7 @@
     "@types/supertest": "^6.0.3",
     "tsconfig-paths": "^4.0.0",
     "http-server": "^14.1.1",
-    "@microservice/eslint-config": "^1.0.0"
+    "@microservice-designs/eslint-config": "^1.0.0"
   },
   "private": true
 }
