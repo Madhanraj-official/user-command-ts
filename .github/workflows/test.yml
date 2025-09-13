@@ -18,6 +18,7 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Configure npm for GitHub Packages
         run: |
+          touch ~/.npmrc
           echo "@microservice-designs:registry=https://npm.pkg.github.com" >> ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
       - name: Install dependencies
@@ -34,6 +35,7 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Configure npm for GitHub Packages
         run: |
+          touch ~/.npmrc
           echo "@microservice-designs:registry=https://npm.pkg.github.com" >> ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
       - name: Install dependencies
@@ -50,8 +52,11 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Configure npm for GitHub Packages
         run: |
+          touch ~/.npmrc
+          echo "${{ secrets.NPM_TOKEN }}"
           echo "@microservice-designs:registry=https://npm.pkg.github.com" >> ~/.npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.NPM_TOKEN }}" >> ~/.npmrc
+          
       - name: Install dependencies
         run: bun install
       - name: Run tests
