@@ -1,6 +1,5 @@
 name: Test User Command Service
-# Triggers the workflow on push or pull request events but only for the main branch
-# and when a release is published
+
 on:
   push:
     branches: [ main ]
@@ -8,52 +7,54 @@ on:
     types: [ published ]
   pull_request:
     branches: [ main ]
-# Jobs to run
+
 jobs:
-#  Lint Checks on code base
+  # Lint Checks
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
-
+      - name: Configure npm for GitHub Packages
+        run: |
+          echo "@microservice-designs:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
       - name: Install dependencies
         run: bun install
-
       - name: Run linter
         run: bun run lint
 
-#  Formatting Checks on code base
+  # Format Checks
   format-check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
-
+      - name: Configure npm for GitHub Packages
+        run: |
+          echo "@microservice-designs:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
       - name: Install dependencies
         run: bun install
-
       - name: Check formatting
         run: bun run format:check
 
-#  Run tests on code base
+  # Run Tests
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Bun
         uses: oven-sh/setup-bun@v1
-
+      - name: Configure npm for GitHub Packages
+        run: |
+          echo "@microservice-designs:registry=https://npm.pkg.github.com" >> ~/.npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
       - name: Install dependencies
         run: bun install
-
       - name: Run tests
         run: bun run test
-
       - name: Make coverage report
-        run: bun run test:coverage
+        run: bun run coverage
