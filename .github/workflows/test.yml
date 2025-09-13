@@ -47,6 +47,6 @@ jobs:
       - name: Run tests
         run: bun run test
       - name: Make coverage report
-        run: bun run coverage
+        run: bun run test:coverage
     env:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
