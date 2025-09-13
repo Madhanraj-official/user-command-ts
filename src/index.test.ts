@@ -1,6 +1,6 @@
-import { describe, it } from 'vitest';
+import { describe, it } from "vitest";
 
-describe('sample', () => {
-  it('health check', async () => {});
-  it('ready check', async () => {});
+describe("sample", () => {
+  it("health check", async () => {});
+  it("ready check", async () => {});
 });
